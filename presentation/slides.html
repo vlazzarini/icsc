@@ -1,0 +1,586 @@
+<html>
+
+<head>
+
+	<title>Csound + _: Notes on an Ecosystem</title>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/moon.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+	<!-- Printing and PDF exports -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<style>
+		#console {
+			font-family: Monospace;
+			color: #b5b6ff;
+			background-color: #000055;
+			font-size: 16px;
+			width: 805px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-style: hidden;
+			padding: 20px 0px;
+		}
+
+		#instruments {
+			font-family: Monospace;
+			color: #b5b6ff;
+			background-color: #000055;
+			font-size: 16px;
+			width: 805px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-style: hidden;
+			padding: 20px 0px;
+
+		}
+
+
+		.reveal blockquote {
+			text-align: left;
+			width: 90%;
+			border: none;
+			box-shadow: none;
+			background: none;
+		}
+
+		.reveal blockquote:before {
+			content: '';
+		}
+
+		.reveal blockquote:after {
+			content: '';
+		}
+
+		.process-box1 {
+			background: #ccc;
+			color: black;
+		}
+
+		.arrow {
+			font-size: 2rem;
+		}
+
+		.reveal h2 {
+			font-family: Monospace;
+		}
+
+		.reveal b {
+			color: #6d4bf2;
+			font-family: Monospace;
+		}
+
+		.reveal h3 {
+			color: #ed248f;
+			font-family: Monospace;
+		}
+
+		#blues {
+      color: #cc83de;
+			font-family: Monospace;
+		}
+
+		#small {
+			color: #cc83de;
+			font-family: Monospace;
+			font-size: 16px;
+		}
+
+		#cent {
+			text-align: center;
+		}
+
+
+		.reveal li {
+			color: #bf94f7;
+			font-family: Monospace;
+		}
+
+		.reveal section p {
+			font-family: Monospace;
+			color: #b5b6ff;
+			text-align: left;
+		}
+
+		.reveal section img {
+			border: none;
+		}
+
+		.reveal h4 {
+			font-family: Monospace;
+			color: #b5b6ff;
+			text-align: center;
+		}
+
+		body {
+			color: #bf94f7;
+			background-color: #000055;
+		}
+
+		.form-line-active input:focus,
+		.form-line-active textarea:focus {
+			border: hidden;
+
+		}
+
+		input:focus,
+		textarea:focus,
+		select:focus {
+			outline-offset: 0px;
+			outline: none;
+			cursor: normal;
+		}
+
+		input,
+		textarea {
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h2>Csound + _</h2>
+				<h3>Notes on an Ecosystem</h3>
+				<h4>Victor Lazzarini</h4>
+			</section>
+			<section>
+			<section>
+				<h2>Part One</h2>
+			 <h3>Background</h3>
+			</section>
+			<section>
+				<p>
+					<b> Csound </b> was first released in 1986 as a C-language port of Music 11,
+					running originally on Unix. Its user interface consisted of a command
+					that invoked the system on a pair of input text files, the orchestra
+					and the score, producing a soundfile.
+						</p>	<p>
+					Since then,<b> Csound</b> has become the centre of a remarkable sound and music computing ecosystem.
+				</p>
+			</section>
+		</section>
+		 <section>
+			<section>
+		 <h3> In The Beginning </h3>
+		 <p>
+		  <span id="blues">Music 11</span>  &#x27f6;
+			a small software ecosystem based on Unix.
+     </p>
+		</section>
+		<section>
+			<img src="figures/music11system.png" style="background-color:#999999;"> </img>
+			<h4> <span id="small">Music 11 components (Vercoe 1983).</span></h4>
+		</section>
+		<section>
+		 <p>
+       <span id="blues"> Music 11</span> was based on modular set of software components interacting with
+			lab peripherals and devices. Much of this became encapsulated inside <b>Csound</b>
+			as some of the separate pieces were rewritten as C routines in a
+			monolothic program.
+      </p>
+			</section>
+		</section>
+		<section>
+		  <section>
+			<h3> Early Csound </h3>
+		 <p>
+			<b>Csound</b>: centrepiece of a music research ecosystem.
+				</p>	<p>
+			New experimental ports, implementations (<span id="blues">transputers</span>,
+			<span id="blues">DSPs</span>), opcodes.
+		  </p>	 <p>
+		   Classic examples &#x27f6; <span id="blues">PV</span> (Dan Ellis)
+			and <span id="blues">FOF</span> (Michael Clarke)
+		</p>
+		</section>
+		<section>
+					 <p>
+			Score processor programs, <span id="blues">Cscore</span>, MIDI and RT audio.
+		  </p>	 <p>
+			<span id="blues">Cecilia</span> (Jean Pich&eacute;)
+			&#x27f6; interactive GUI frontend, on UNIX.
+					</p>
+			</section>
+		</section>
+		<section>
+		<section>
+			<h3> Forks and Canonical Csound</h3>
+			<p>
+			1996-2003: forks, custom versions.
+		</p><p>
+			<span id="blues">DirectCsound</span> (Gabriel Maldonado)
+			&#x27f6; widget opcodes, on Windows.
+			</p><p>
+			<span id="blues">MacCsound</span> (Matt Ingalls)
+			&#x27f6; lib<b>csound</b>  &#x27f6; MaxMSP external, on MacOS
+		</p>
+		<p>
+			<span id="blues">Canonical</span>	<b>Csound</b> (John ffitch, Bath).
+				</p>
+		</section>
+	</section>
+			<section>
+      <section>
+      <h3> Csound 5 and the API </h3>
+			<p>
+			<b>Csound 4.21</b>: API introduced.
+			</p> 		<p>
+       Monolithic <b>Csound</b> to lib<b>csound</b> &#x27f6; lots of issues,
+		   complete hack.
+			</p>
+			<p>
+       Library not re-entrant &#x27f6; only one <b>Csound</b> in each process.
+		</p>
+</section>
+<section>
+				<p>
+<b>Csound 5</b>: complete system re-engineering &#x27f6;
+encapsulated into a re-entrant <b>Csound</b> class;
+unified earlier forks.
+</p> 		<p>
+The C/C++ API: extensive manipulation of engine operation &#x27f6;
+full embedding into applications.
+			</p>
+</section>
+<section>
+	<p>
+Interfaces: <br>
+<span id="blues">Tcl/Tk</span>  &#x27f6; new <span id="blues">Cecilia</span><br>
+<span id="blues">Java</span> &#x27f6;
+	<span id="blues">Blue</span> (Steven Yi)<br>
+<span id="blues">Python</span>
+</p> 		<p>
+Frontends: <br>
+<span id="blues">QuteCsound</span> (Andr&eacute;s Cabrera) <br>
+<span id="blues">Cabbage</span> (Rory Walsh) <br>
+externals for Pd and MaxMSP <br>
+ports to mobile devices
+			</p>
+			</section>
+		</section>
+		<section>
+		<section>
+			<h3>Csound 6 </h3>
+
+<p>
+			2013: API updated, new parser &amp; compiler, language improvements,
+			RT mode, sample-level accuracy, various other internal changes.
+</p> <p>
+			<b>Csound</b> &#x27f6; centre of an ecosystem in platforms from embedded
+			devices to mobile to desktop to the web through to supercomputers.
+</p>
+			</section>
+			<section>
+				<p>
+					<textarea class="cscode" id="instruments" cols="80" rows="10" spellcheck="false">
+instr 1
+out(oscili(p4, p5))
+endin
+schedule(1,0,1,0.5,440)
+</textarea>
+				</p>
+				<p>
+					<textarea class="console" cols="80" rows="14" id="console">
+			Csound: not loaded</textarea>
+				</p>
+			</section>
+
+		<section>
+			<p>
+		  <b>Csound</b> is now best described as a
+			<span id="blues">sound and music computing system</span>,
+		   used in the composition and performance of electronic music, research,
+			 teaching, and general audio/music applications.
+		</p>
+		</section>
+	</section>
+		<section>
+			<section>
+				<h2>Part Two</h2>
+			 <h3>The Ecosystem</h3>
+			</section>
+	<section>
+		<h3>System Levels</h3>
+		<img src="figures/system-levels1.png" width="900" style="background-color:#000055;"> </img>
+	</section>
+</section>
+<section>
+	<section>
+   <h3> Research </h3>
+	 <p>
+	 <b>Csound</b> &#x27f6; fully-featured research platform
+</p> <p>
+	 At Maynooth, it is our fundamental
+	 environment for prototyping, implementation, and deployment for
+	 all our research in sound and music computing.
+ </p>
+	</section>
+	<section>
+
+  <h3> HID protocol interaction</h3>
+<h4> <span id="small">Damien McEvoy (MA, 2018) demonstrating interactive
+	HID devices.</span></h4>
+		<video width="560" controls>
+		  <source src="HIDOpThesisDemo.mp4" type="video/mp4">
+		  Your browser does not support HTML5 video.
+		</video>
+		<p> <span id="small"></span></p>
+	</section>
+	<section>
+
+ <h3> Parallel <b>tvconv</b> </h3>
+<img src="figures/plot.png" width="400" style="background-color:#000055;"> </img>
+<p> <span id="small">RT ratios: Solid (original), Dashes (parallel, GPU), Dots (parallel, CPU),
+for various partition sizes and convolution lengths.</span></p>
+	</section>
+
+	<section>
+<h4> <span id="small">A short improvisation using parallel cltvconv for voice
+	and drums.</span></h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/r3XeGe63l9Y" frameborder="0"
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+		<p> <span id="small"></span></p>
+	</section>
+	<section>
+		<pre><code>
+instr 2
+ out(cltvconv(inch(1),
+	      diskin:a("beats.wav", 1, 0, 1),
+	      1, 1, 8192, filelen("beats.wav")*sr,1))
+endin
+	  </code></pre>
+	</section>
+</section>
+<section>
+	<section>
+<h3>  Embedded systems </h3>
+	 <p>
+Sound synthesis engine for
+embedded devices:  Raspberry PI, Intel Galileo and Edison, and other devices
+&#x27f6; <b>Csound</b> in embedded applications,
+eurorack modules, stomp boxes, etc.
+ </p>
+	</section>
+	<section>
+		<h4> <span id="small">Csound on the Galileo</span></h4>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/ogYdJsKKxJk"
+	frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+	allowfullscreen></iframe>
+</section>
+
+<section>
+	<h4> <span id="small">Csound on the Edison</span></h4>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/GLuk-puvtKo"
+	frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+	allowfullscreen></iframe>
+</section>
+
+<section>
+	<h4> <span id="small">The QuBit Nebulae Eurorack module</span></h4>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/5JXWeCuTm70"
+	frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+	allowfullscreen></iframe>
+</section>
+<section>
+	<h4> <span id="small">BelaCsound: <b>Csound</b> on a hard RT interactive platform</span></h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2ICv0E9Czmc"
+frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</section>
+<section>
+<h3>Csound on ELK </h3>
+<p>	<b>Csound</b> is being introduced
+	into ELK, opening it up for
+	application in music devices and instruments.
+</p>
+	<img src="figures/elk_logo.png" width="100" style="background-color:#000055;"> </img>
+<p>
+	Based on VST plugins created with <span id="blues">Cabbage</span> &#x27f6;
+	<b>Csound</b> as the
+	underlying sound engine. </p>
+
+</section>
+</section>
+<section>
+<section>
+<h3> WebAudio <b>Csound</b></h3>
+
+<p>
+2014: <b>Csound</b> available Web platform &#x27f6; <span id="blues">PNaCl</span> and
+<span id="blues">Web Audio</span> API
+</p><p>
+2017: <span id="blues">WASM</span> introduced
+</p><p>
+2018: <span id="blues">Audio Worklet API</span> &#x27f6;
+better performance and lower latency
+</p><p>
+</p>
+</section>
+<section>
+<h3> Web Audio Csound Examples </h3>
+<a href="../examples/index.html" target="_blank">
+	<img src="figures/logo-inv.png" width="300" style="background-color:#000055;"> </img>
+</a>
+</section>
+<section>
+<p>
+WebAudio <b>Csound</b> is used widely.
+</p><p>
+The <span id="blues">WebIDE</span>
+project (Steven Yi, Ed Costello, Hlo&#x00F0;ver Sigurdsson) looks
+very promising in delivering a complete IDE for
+<b>Csound</b> on the web platform.
+</p>
+</section>
+</section>
+<section>
+<section>
+
+<h3>Music Applications</h3>
+<p>
+We have been listening to <b>Csound</b>-made music since 1986,
+the primary target of the system is music-making.
+</p>
+</section>
+<section>
+<img src="figures/CsoundQT090.png" width="900" style="background-color:#000055;"> </img>
+</section>
+<section>
+<img src="figures/blue.png" width="900" style="background-color:#000055;"> </img>
+</section>
+<section>
+<img src="figures/CabbageStudio.gif" width="900" style="background-color:#000055;"> </img>
+</section>
+<section>
+<img src="figures/WinXound_linux.jpg" width="600" style="background-color:#000055;"> </img>
+</section>
+<section>
+<img src="figures/csound-mode.gif" width="600" style="background-color:#000055;"> </img>
+</section>
+<section>
+<p>
+<b>Csound</b> is now embedded in the computer production studio,
+thanks largely to <span id="blues">Cabbage</span>,
+which simplified plugin development.
+</p>
+<img src="figures/cabbage_transparent.svg" width="100" style="background-color:#000055;"> </img>
+<p>
+There are many <b>Csound</b> users now who are not at all aware of it.
+It's just another VST that they are running.
+</p>
+
+</section>
+</section>
+<section>
+<section>
+	<h2>Part Three</h2>
+ <h3>Where to now?</h3>
+</section>
+</section>
+		</div>
+	</div>
+	 <script src="../js/csound.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="plugin/markdown/marked.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script>
+      Reveal.initialize({history: true});
+
+      // Make sure target is _blank for all links to allow
+      // working within MyCourses
+      document.querySelectorAll("a").forEach(
+                (l) => l.setAttribute("target", "_blank"));
+
+		  function WebMIDI_init(midi_handle) {
+		     var haveDevs = false;
+		     var devs = midi_handle.inputs.values();
+		     for ( var m = devs.next(); m && !m.done; m = devs.next()) {
+		       m.value.onmidimessage = onMIDIEvent;
+		       haveDevs = true;
+		     }
+		     if (!haveDevs)
+		       console.log("No MIDIDevs");
+		     else {
+		       console.log("WebMIDI support enabled");
+		     }
+		   }
+
+		   function WebMIDI_err(err) {
+		       console.log("Error starting WebMIDI");
+		   }
+
+		   function onMIDIEvent(event) {
+            csound.Csound.midiMessage(event.data[0], event.data[1], event.data[2]);
+		     }
+
+								// called by csound.js when the WASM module loads
+				function moduleDidLoad() {
+				       // play starts performance
+							 csound.Csound.setOption("--midi-velocity-amp=4")
+							 csound.Csound.setOption("--midi-key-cps=5")
+				       csound.Play();
+							 csound.CompileOrc(
+                   `massign 1,1
+			              instr 1
+				              out(oscili(p4, p5))
+			              endin
+										`);
+							 if (navigator.requestMIDIAccess)
+			          navigator.requestMIDIAccess().then(WebMIDI_init,
+				                              WebMIDI_err);
+		           else
+			           console.log("No WebMIDI support");
+
+
+
+				 }
+
+         function compile() {
+							 // compile code
+							 if(CSOUND_AUDIO_CONTEXT.state !== 'running')
+							            CSOUND_AUDIO_CONTEXT.resume();
+				       csound.CompileOrc(document.getElementById('instruments').value);
+
+						 }
+				     // called by csound.js
+				 function attachListeners() {
+				         // event listeners
+								 var element = document.getElementById('console');
+                 element.addEventListener("click", compile);
+				  }
+
+				      var count = 0;
+				 // called by csound.js to display messages from Csound
+				 function handleMessage(message) {
+				       var element = document.getElementById('console');
+				       element.value += message;
+				       element.scrollTop = 99999; // focus on bottom
+				       count += 1;
+				       if (count == 1000) {
+				         element.value = ' ';
+				         count = 0;
+				       }
+				  }
+
+
+		</script>
+
+
+	</body>
+</html>
